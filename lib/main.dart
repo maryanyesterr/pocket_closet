@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:pocket_closet/cadastro.dart';
+import 'package:pocket_closet/criarlooks.dart';
+import 'package:pocket_closet/guardaroupa.dart';
+import 'package:pocket_closet/home.dart';
 import 'package:pocket_closet/login.dart';
+import 'package:pocket_closet/meuslooks.dart';
+import 'package:pocket_closet/planejamento.dart';
+import 'package:pocket_closet/seuestilo.dart';
+import 'package:pocket_closet/suasMedidas.dart';
 
 void main() {
-  runApp(const MyApp());
+  // 2. Garante que os bindings do Flutter estejam prontos antes de rodar o código assíncrono
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 3. Inicializa os dados de data para o Brasil (pt_BR)
+  initializeDateFormatting('pt_BR', null).then((_) {
+    // Só inicia o app depois que a tradução estiver carregada com sucesso
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -13,27 +28,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LoginPC',
+      title: 'Pocket Closet',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Cadastro(),
+      home: const PlanejamentoSemanal(),
     );
   }
 }
