@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:pocket_closet/cadastro.dart';
 import 'package:pocket_closet/criarlooks.dart';
+import 'package:pocket_closet/dashboard.dart';
 import 'package:pocket_closet/guardaroupa.dart';
 import 'package:pocket_closet/home.dart';
 import 'package:pocket_closet/login.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const PlanejamentoSemanal(),
+      home: const Dashboard(),
     );
   }
 }

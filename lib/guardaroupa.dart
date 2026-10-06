@@ -365,46 +365,7 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
             ],
           ),
         ),
-      ),
-      // ==================================================
-      // ABAS DE NAVEGAÇÃO INFERIOR (BottomNavigationBar)
-      // ==================================================
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex:
-            1, // Define 'Guarda-roupa' (índice 1) como a aba ativa acesa
-        type: BottomNavigationBarType
-            .fixed, // Impede que os ícones se desloquem ou sumam ao clicar
-        selectedItemColor: Colors.purple, // Ícone ativo fica roxo
-        unselectedItemColor: Colors.grey, // Ícones inativos ficam cinzas
-        selectedLabelStyle: const TextStyle(
-          fontSize: 11,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(fontSize: 11),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.door_sliding,
-            ), // Ícone de guarda-roupa/porta de correr
-            label: 'Guarda-roupa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.checkroom_outlined),
-            activeIcon: Icon(Icons.checkroom),
-            label: 'Looks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            activeIcon: Icon(Icons.calendar_month),
-            label: 'Planejamento',
-          ),
-        ],
-      ),
+      ),      
     );
   }
 }

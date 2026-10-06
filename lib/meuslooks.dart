@@ -280,43 +280,6 @@ class _MeusLooksState extends State<MeusLooks> {
           ),
         ),
       ),
-      // ==================================================
-      // BARRA DE NAVEGAÇÃO INFERIOR DO SEU APP
-      // ==================================================
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2, // Index 2 mantendo a aba 'Looks' selecionada
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.purple,
-        unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 11,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(fontSize: 11),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.door_sliding_outlined),
-            activeIcon: Icon(Icons.door_sliding),
-            label: 'Guarda-roupa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.checkroom,
-            ), // Ícone de cabide representando os Looks ativo
-            label: 'Looks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            activeIcon: Icon(Icons.calendar_month),
-            label: 'Planejamento',
-          ),
-        ],
-      ),
     );
   }
 }

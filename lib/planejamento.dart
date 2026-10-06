@@ -6,8 +6,7 @@ class PlanejamentoSemanal extends StatefulWidget {
   const PlanejamentoSemanal({super.key});
 
   @override
-  State<PlanejamentoSemanal> createState() =>
-      _PlanejamentoSemanalState();
+  State<PlanejamentoSemanal> createState() => _PlanejamentoSemanalState();
 }
 
 class _PlanejamentoSemanalState extends State<PlanejamentoSemanal> {
@@ -306,34 +305,6 @@ class _PlanejamentoSemanalState extends State<PlanejamentoSemanal> {
             ],
           ),
         ),
-      ),
-      // Barra de navegação inferior padrão mantida
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 3,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.purple,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.door_sliding_outlined),
-            activeIcon: Icon(Icons.door_sliding),
-            label: 'Guarda-roupa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.checkroom_outlined),
-            activeIcon: Icon(Icons.checkroom),
-            label: 'Looks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Planejamento',
-          ),
-        ],
       ),
     );
   }
