@@ -78,13 +78,10 @@ class _PlanejamentoSemanalState extends State<PlanejamentoSemanal> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.purple,
-                      size: 20,
-                    ),
-                    onPressed: () => Navigator.pop(context),
+                    SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Image.asset("assets/imgs/logo.png"),
                   ),
                   const Text(
                     "Planejamento semanal",

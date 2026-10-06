@@ -108,16 +108,12 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween, // Espaça os elementos (esquerda, centro e direita)
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.purple,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      // Ação para voltar de tela
-                    },
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Image.asset("assets/imgs/logo.png"),
                   ),
+                  
                   const Text(
                     "Guarda-roupa",
                     style: TextStyle(
@@ -365,7 +361,7 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
             ],
           ),
         ),
-      ),      
+      ),
     );
   }
 }

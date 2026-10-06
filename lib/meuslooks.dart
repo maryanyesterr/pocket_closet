@@ -87,15 +87,10 @@ class _MeusLooksState extends State<MeusLooks> {
                 mainAxisAlignment: MainAxisAlignment
                     .spaceBetween, // Distribui os elementos nas extremidades
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.purple,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      // Ação para navegar para a tela anterior
-                    },
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Image.asset("assets/imgs/logo.png"),
                   ),
                   const Text(
                     "Meus looks",
@@ -118,6 +113,39 @@ class _MeusLooksState extends State<MeusLooks> {
                 ],
               ),
               const SizedBox(height: 15),
+              // ==================================================
+              // BARRA DE PESQUISA
+              // ==================================================
+              Container(
+                decoration: BoxDecoration(
+                  color: const Color(
+                    0xFFF5F5F5,
+                  ), // Cinza bem claro para o fundo da barra
+                  borderRadius: BorderRadius.circular(
+                    30,
+                  ), // Bordas arredondadas ovais
+                  border: Border.all(
+                    color: Colors.amber.shade400,
+                    width: 1.5,
+                  ), // Borda amarela do layout
+                ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Buscar peças",
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.purple,
+                    ), // Lupa roxa à esquerda
+                    border: InputBorder
+                        .none, // Remove a linha padrão do TextField do Flutter
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 14,
+                    ), // Alinha o texto internamente
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
 
               // ==================================================
               // ABAS FILTRADORAS HORIZONTAIS
