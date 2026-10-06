@@ -270,7 +270,7 @@ class _GuardaRoupaState extends State<Home> {
                       SizedBox(
                         width: 40,
                         height: 40,
-                        child: Image.asset("assets/logo/logo.png"),
+                        child: Image.asset("assets/imgs/logo.png"),
                       ),
 
                       const SizedBox(width: 12),

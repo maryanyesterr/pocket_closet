@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_closet/dashboard.dart';
 
 class Cadastro extends StatelessWidget {
   const Cadastro({super.key});
@@ -57,7 +58,13 @@ class Cadastro extends StatelessWidget {
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 onPressed: () {
-                  // ação ao clicar em Próximo
+                  // ação ao clicar em Próximo// Navega para o Dashboard e limpa o histórico de telas anteriores
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const Dashboard()),
+                    (route) =>
+                        false, // Remove todas as telas anteriores da pilha
+                  );
                 },
                 child: const Text("Próximo"),
               ),
@@ -103,17 +110,27 @@ class _InputField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
-         enabledBorder: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10), // arredondamento
             borderSide: BorderSide(
-              color: Color.fromRGBO(246, 214, 85, 1), // cor da borda quando não focado
-              width: 2,                       // espessura
+              color: Color.fromRGBO(
+                246,
+                214,
+                85,
+                1,
+              ), // cor da borda quando não focado
+              width: 2, // espessura
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: Color.fromRGBO(246, 214, 85, 1), // cor da borda quando focado
+              color: Color.fromRGBO(
+                246,
+                214,
+                85,
+                1,
+              ), // cor da borda quando focado
               width: 2.5,
             ),
           ),

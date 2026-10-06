@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_closet/cadastro.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -133,7 +134,13 @@ class Login extends StatelessWidget {
                       backgroundColor: Color.fromRGBO(81, 17, 147, 1),
                       minimumSize: const Size(double.infinity, 50),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navega para a tela de Cadastro
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Cadastro()),
+                      );
+                    },
                     child: const Text("Criar conta grátis"),
                   ),
                   const SizedBox(height: 10),
