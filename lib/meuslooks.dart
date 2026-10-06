@@ -151,54 +151,60 @@ class _MeusLooksState extends State<MeusLooks> {
               // ABAS FILTRADORAS HORIZONTAIS
               // ==================================================
               SizedBox(
-                height: 35, // Altura reservada para os textos clicáveis
+                height: 35, // Altura limite para a barra horizontal de botões
                 child: ListView.builder(
                   scrollDirection:
-                      Axis.horizontal, // Define a rolagem para os lados
+                      Axis.horizontal, // Faz a lista rolar para os lados
                   itemCount: categorias.length,
                   itemBuilder: (context, index) {
                     final cat = categorias[index];
+                    // Verifica se esta aba específica é a selecionada pelo usuário
                     final bool isSelected = cat == categoriaSelecionada;
 
                     return GestureDetector(
                       onTap: () {
-                        // Recarrega a interface aplicando o filtro da aba clicada
+                        // O setState avisa o Flutter para atualizar e redesenhar a tela com o novo filtro
                         setState(() {
                           categoriaSelecionada = cat;
                         });
                       },
                       child: Container(
                         margin: const EdgeInsets.only(
-                          right: 20,
-                        ), // Espaço de respiro entre as palavras
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              cat,
-                              style: TextStyle(
-                                color: isSelected ? Colors.purple : Colors.grey, // Roxo se ativo, cinza se inativo
-                                fontWeight: isSelected
-                                    ? FontWeight.bold
-                                    : FontWeight.w500,
-                                fontSize: 15,
-                              ),
+                          right: 15,
+                        ), // Espaço entre um botão e outro
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          // Se estiver selecionado, fica roxo completo. Se não, fica com fundo roxo bem clarinho.
+                          color: isSelected
+                              ? Colors.purple
+                              : Colors.purple.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ), // Deixa as bordas bem arredondadas (estilo pílula)
+                        ),
+                        child: Center(
+                          child: Text(
+                            cat,
+                            style: TextStyle(
+                              // Troca a cor do texto dependendo se o botão está ativo (branco) ou inativo (roxo)
+                              color: isSelected ? Colors.white : Colors.purple,
+                              fontWeight: isSelected
+                                  ? FontWeight.bold
+                                  : Alignment.center != null
+                                  ? FontWeight.w500
+                                  : FontWeight.normal,
                             ),
-                            // Pequena barra roxa indicadora abaixo da palavra selecionada
-                            if (isSelected)
-                              Container(
-                                margin: const EdgeInsets.only(top: 4),
-                                height: 2,
-                                width: 20,
-                                color: Colors.purple,
-                              ),
-                          ],
+                          ),
                         ),
                       ),
                     );
                   },
                 ),
               ),
+
               const SizedBox(height: 15),
 
               // ==================================================
