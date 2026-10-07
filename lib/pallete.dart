@@ -7,4 +7,5 @@ class Pallete {
   static const Color borderButton = Color.fromRGBO(242, 180, 65, 1);
   static const Color black = Color.fromRGBO(13, 13, 13, 1);
   static const Color whiteColor = Colors.white;
+  
 }

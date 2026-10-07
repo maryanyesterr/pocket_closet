@@ -64,20 +64,13 @@ class _GuardaRoupaState extends State<Home> {
   // ============================================================
 
   Future<void> buscarClimaAoVivo() async {
-    // Enquanto estiver buscando, mostramos o carregamento.
     if (mounted) {
       setState(() {
         carregando = true;
       });
     }
 
-    // URL da API HG Brasil.
-    //
-    // Neste exemplo estamos buscando o clima de
-    // Belo Horizonte, MG.
-    //
-    // Depois podemos trocar isso para localização automática.
-    final url = Uri.https('api.hgbrasil.com', '/weather', {
+    final url = Uri.https('://hgbrasil.com', '/weather', {
       'city_name': 'Belo Horizonte,MG',
       'key': apiKey,
       'format': 'json-cors',
@@ -85,22 +78,14 @@ class _GuardaRoupaState extends State<Home> {
     });
 
     try {
-      // Faz a requisição para a API.
       final resposta = await http.get(url);
 
-      // Mostra no console o que a API respondeu.
-      // Isso ajuda bastante caso aconteça algum erro.
       debugPrint('Status da API: ${resposta.statusCode}');
       debugPrint('Resposta da API: ${resposta.body}');
-
-      // ========================================================
-      // RESPOSTA OK
-      // ========================================================
 
       if (resposta.statusCode == 200) {
         final dados = jsonDecode(resposta.body);
 
-        // Verifica se a API aceitou a chave.
         if (dados['valid_key'] != true) {
           if (!mounted) return;
 
@@ -114,29 +99,20 @@ class _GuardaRoupaState extends State<Home> {
           return;
         }
 
-        // Pega os resultados do clima.
         final resultados = dados['results'];
 
         if (!mounted) return;
 
         setState(() {
           cidade = resultados['city'] ?? 'Belo Horizonte, MG';
-
           temperatura = '${resultados['temp'] ?? '--'}°C';
-
           condicao = ajustarDescricaoClima(
             resultados['description'] ?? 'Sem informação sobre o clima',
           );
-
           condicaoSlug = resultados['condition_slug'] ?? 'cloud';
-
           carregando = false;
         });
-      }
-      // ========================================================
-      // ERRO HTTP
-      // ========================================================
-      else {
+      } else {
         if (!mounted) return;
 
         setState(() {
@@ -146,11 +122,7 @@ class _GuardaRoupaState extends State<Home> {
           carregando = false;
         });
       }
-    }
-    // ==========================================================
-    // ERRO DE CONEXÃO
-    // ==========================================================
-    catch (e) {
+    } catch (e) {
       debugPrint('Erro ao buscar clima: $e');
 
       if (!mounted) return;
@@ -172,28 +144,20 @@ class _GuardaRoupaState extends State<Home> {
     switch (condicaoSlug) {
       case 'clear_day':
         return Icons.wb_sunny;
-
       case 'clear_night':
         return Icons.nightlight_round;
-
       case 'rain':
         return Icons.water_drop;
-
       case 'storm':
         return Icons.thunderstorm;
-
       case 'cloud':
         return Icons.cloud;
-
       case 'cloudly_day':
         return Icons.cloud_queue;
-
       case 'cloudly_night':
         return Icons.cloud;
-
       case 'fog':
         return Icons.foggy;
-
       default:
         return Icons.cloud;
     }
@@ -209,31 +173,22 @@ class _GuardaRoupaState extends State<Home> {
     switch (texto) {
       case 'chuvas esparsas':
         return 'Chuva passageira';
-
       case 'chuva':
         return 'Chuvoso';
-
       case 'pancadas de chuva':
         return 'Pancadas de chuva';
-
       case 'tempo nublado':
         return 'Nublado';
-
       case 'parcialmente nublado':
         return 'Parcialmente nublado';
-
       case 'tempo limpo':
         return 'Céu limpo';
-
       case 'ensolarado':
         return 'Ensolarado';
-
       case 'tempestade':
         return 'Tempestade';
-
       case 'neblina':
         return 'Neblina';
-
       default:
         return descricao;
     }
@@ -246,10 +201,12 @@ class _GuardaRoupaState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // CONFIGURAÇÃO DO FUNDO BRANCO AQUI:
+      backgroundColor: Colors.white,
+
       // ==========================================================
       // CONTEÚDO DA PÁGINA
       // ==========================================================
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
@@ -259,7 +216,6 @@ class _GuardaRoupaState extends State<Home> {
               // ==================================================
               // TOPO
               // ==================================================
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -272,9 +228,7 @@ class _GuardaRoupaState extends State<Home> {
                         height: 60,
                         child: Image.asset("assets/imgs/logo.png"),
                       ),
-
                       const SizedBox(width: 12),
-
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -286,9 +240,7 @@ class _GuardaRoupaState extends State<Home> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           const SizedBox(height: 4),
-
                           const Text(
                             "Vamos escolher seu look para hoje?",
                             style: TextStyle(
@@ -300,7 +252,6 @@ class _GuardaRoupaState extends State<Home> {
                       ),
                     ],
                   ),
-
                   IconButton(
                     icon: const Icon(Icons.more_horiz),
                     onPressed: () {},
@@ -339,9 +290,7 @@ class _GuardaRoupaState extends State<Home> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-
                           const SizedBox(height: 4),
-
                           Text(
                             temperatura,
                             style: const TextStyle(
@@ -350,9 +299,7 @@ class _GuardaRoupaState extends State<Home> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           const SizedBox(height: 4),
-
                           Text(
                             condicao,
                             maxLines: 2,
@@ -365,7 +312,6 @@ class _GuardaRoupaState extends State<Home> {
                         ],
                       ),
                     ),
-
                     SizedBox(
                       width: 90,
                       height: 100,
@@ -384,9 +330,7 @@ class _GuardaRoupaState extends State<Home> {
                   ],
                 ),
               ),
-
               const SizedBox(height: 12),
-
               // ==================================================
               // ATUALIZAR CLIMA
               // ==================================================
@@ -402,9 +346,7 @@ class _GuardaRoupaState extends State<Home> {
                   label: const Text("Atualizar clima"),
                 ),
               ),
-
               const SizedBox(height: 20),
-
               // ==================================================
               // LOOK DO DIA
               // ==================================================
@@ -416,20 +358,16 @@ class _GuardaRoupaState extends State<Home> {
                   color: Colors.black,
                 ),
               ),
-
               const SizedBox(height: 12),
-
               Container(
                 width: double.infinity,
                 height: 200,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 255, 254, 255),
+                  color: const Color.fromARGB(255, 173, 45, 173),
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-
               const SizedBox(height: 16),
-
               // ==================================================
               // VER DETALHES
               // ==================================================
@@ -450,8 +388,6 @@ class _GuardaRoupaState extends State<Home> {
                   ),
                 ),
               ),
-
-              // Espaço para o menu não ficar grudado no conteúdo
               const SizedBox(height: 20),
             ],
           ),
