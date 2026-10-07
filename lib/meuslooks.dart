@@ -211,17 +211,17 @@ class _MeusLooksState extends State<MeusLooks> {
               // GRID DE LOOKS (2 colunas automatizadas)
               // ==================================================
               Expanded(
-                // O Expanded expande a grade para preencher todo o resto vertical da tela
+                // O Expanded faz a tabela ocupar todo o resto do espaço disponível na tela
                 child: GridView.builder(
-                  itemCount: looksFiltrados
-                      .length, // Alimenta a grade baseado na filtragem atual
+                  itemCount: looksFiltrados.length, // Renderiza apenas a quantidade de itens do filtro ativo
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, // Define exatamente duas colunas horizontais lado a lado
                     crossAxisSpacing:
                         16, // Espaçamento do vão do meio das colunas
                     mainAxisSpacing:
                         20, // Espaçamento entre as linhas verticais
-                    childAspectRatio: 0.8, // Controla a proporção entre largura e altura dos blocos
+                    childAspectRatio:
+                        0.8, // Ajusta a proporção vertical dos blocos
                   ),
                   itemBuilder: (context, index) {
                     final look = looksFiltrados[index];
@@ -249,7 +249,7 @@ class _MeusLooksState extends State<MeusLooks> {
                                     child: Image.asset(
                                       look['imagem'],
                                       fit: BoxFit.contain,
-                                      // Impede a quebra visual se o arquivo físico não for encontrado
+                                      // Evita que o app quebre se o arquivo físico da imagem não existir ainda
                                       errorBuilder:
                                           (context, error, stackTrace) {
                                             return const Icon(
@@ -267,18 +267,20 @@ class _MeusLooksState extends State<MeusLooks> {
                                   right: 8,
                                   child: GestureDetector(
                                     onTap: () {
-                                      // Altera o estado interno de favorito deste item específico
+                                      // Inverte o estado de favorito do item ao clicar
                                       setState(() {
                                         look['favorito'] = !look['favorito'];
                                       });
                                     },
                                     child: Icon(
-                                      Icons.favorite,
-                                      size: 20,
-                                      // Se for favorito, roxo. Caso contrário, cor amarela de borda
+                                      // Se for favorito exibe o coração cheio, caso contrário exibe apenas o contorno
+                                      look['favorito']
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      size: 18,
                                       color: look['favorito']
                                           ? Colors.purple
-                                          : Colors.amber.shade400,
+                                          : Colors.amber,
                                     ),
                                   ),
                                 ),
