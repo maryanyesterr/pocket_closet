@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:pocket_closet/cadastro.dart';
-import 'package:pocket_closet/criarlooks.dart';
-import 'package:pocket_closet/dashboard.dart';
-import 'package:pocket_closet/guardaroupa.dart';
 import 'package:pocket_closet/home.dart';
-import 'package:pocket_closet/login.dart';
-import 'package:pocket_closet/meuslooks.dart';
-import 'package:pocket_closet/planejamento.dart';
-import 'package:pocket_closet/seuestilo.dart';
-import 'package:pocket_closet/suasMedidas.dart';
+
+
 
 void main() {
   // 2. Garante que os bindings do Flutter estejam prontos antes de rodar o código assíncrono
@@ -34,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Login(),
+      home: const Home(),
     );
   }
 }
