@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_closet/tirarFoto.dart';
 
 // Widget com estado (Stateful) porque o usuário vai interagir com a tela (filtrar categorias, favoritar roupas).
 class GuardaRoupa extends StatefulWidget {
@@ -19,6 +20,8 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
     'Calças',
     'Vestidos',
     'Casacos',
+    'Sapatos'
+        'Acessórios',
   ];
 
   // Base de dados local (simulada) em formato de Lista de Mapas.
@@ -26,57 +29,51 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
   final List<Map<String, dynamic>> minhasPecas = [
     {
       'nome': 'Blusa bege',
-      'imagem': 'assets/img/blusa_bege.png', // Caminho interno da imagem no seu projeto
+      'imagem': 'assets/imgs/blusa_bege.jpg', // Caminho interno da imagem no seu projeto
       'favorito': true, // Define se o ícone de coração começa preenchido
       'categoria': 'Blusas', // Categoria usada no filtro automático
     },
     {
       'nome': 'Jaqueta azul',
-      'imagem': 'assets/img/jaqueta_azul.png',
+      'imagem': 'assets/imgs/jaqueta_azul.jpg',
       'favorito': false,
       'categoria': 'Casacos',
     },
     {
       'nome': 'Casaco bege',
-      'imagem': 'assets/img/casaco_bege.png',
+      'imagem': 'assets/imgs/casaco_bege.jpg',
       'favorito': false,
       'categoria': 'Casacos',
     },
     {
+      'nome': 'Calça jeans',
+      'imagem': 'assets/imgs/calca_jeans.jpg',
+      'favorito': false,
+      'categoria': 'Calças',
+    },
+    {
       'nome': 'Vestido preto',
-      'imagem': 'assets/img/vestido_preto.png',
+      'imagem': 'assets/imgs/vestido_preto.jpg',
       'favorito': false,
       'categoria': 'Vestidos',
     },
     {
-      'nome': 'Jeans azul claro',
-      'imagem': 'assets/img/jeans_claro.png',
-      'favorito': true,
-      'categoria': 'Calças',
-    },
-    {
       'nome': 'Tênis branco',
-      'imagem': 'assets/img/tenis_branco.png',
+      'imagem': 'assets/imgs/tenis_branco.jpg',
       'favorito': true,
-      'categoria': 'Todos',
+      'categoria': 'Sapatos',
     },
     {
       'nome': 'Bolsa marrom',
-      'imagem': 'assets/img/bolsa_marrom.png',
+      'imagem': 'assets/imgs/bolsa_marrom.jpg',
       'favorito': false,
-      'categoria': 'Todos',
+      'categoria': 'Acessórios',
     },
     {
       'nome': 'Óculos escuros',
-      'imagem': 'assets/img/oculos_escuros.png',
+      'imagem': 'assets/imgs/oculos_escuros.jpg',
       'favorito': false,
-      'categoria': 'Todos',
-    },
-    {
-      'nome': 'Chapéu bege',
-      'imagem': 'assets/img/chapeu_bege.png',
-      'favorito': false,
-      'categoria': 'Todos',
+      'categoria': 'Acessórios',
     },
   ];
 
@@ -113,7 +110,7 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
                     height: 60,
                     child: Image.asset("assets/imgs/logo.png"),
                   ),
-                  
+
                   const Text(
                     "Guarda-roupa",
                     style: TextStyle(
@@ -123,13 +120,8 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
-                      Icons.tune,
-                      color: Colors.purple,
-                    ), // Ícone de configurações/filtros do lado direito
-                    onPressed: () {
-                      // Ação para abrir filtros avançados
-                    },
+                    icon: const Icon(Icons.more_horiz),
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -345,7 +337,13 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
                       ),
                     ),
                     onPressed: () {
-                      // Código para disparar a abertura da câmera ou galeria futuramente
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const TirarFoto(iniciarAutomaticamente: true),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Adicionar peça",
