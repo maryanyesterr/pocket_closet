@@ -55,7 +55,7 @@ class _PlanejamentoSemanalState extends State<PlanejamentoSemanal> {
                       child: Image.asset("assets/imgs/logo.png"),
                     ),
                     const Text(
-                      "Planejamento semanal",
+                      "Planejamento",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
