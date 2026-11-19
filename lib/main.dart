@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:pocket_closet/dashboard.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pocket_closet/informacoes.dart';
+import 'package:pocket_closet/inicio.dart';
 
 
 void main() async { 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Informacoes(),
+      home: const Inicio(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_closet/tirarFoto.dart';
+//import 'package:pocket_closet/tirarFoto.dart';
 
 // Widget com estado (Stateful) porque o usuário vai interagir com a tela (filtrar categorias, favoritar roupas).
 class GuardaRoupa extends StatefulWidget {
@@ -20,8 +20,8 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
     'Calças',
     'Vestidos',
     'Casacos',
-    'Sapatos'
-        'Acessórios',
+    'Sapatos',
+    'Acessórios',
   ];
 
   // Base de dados local (simulada) em formato de Lista de Mapas.
@@ -337,13 +337,13 @@ class _GuardaRoupaState extends State<GuardaRoupa> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const TirarFoto(iniciarAutomaticamente: true),
-                        ),
-                      );
+                     // Navigator.push(
+                     //   context,
+                     //   MaterialPageRoute(
+                     //     builder: (context) =>
+                     //         const TirarFoto(iniciarAutomaticamente: true),
+                     //   ),
+                     // );
                     },
                     child: const Text(
                       "Adicionar peça",

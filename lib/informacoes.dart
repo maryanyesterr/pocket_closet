@@ -35,7 +35,7 @@ class _InformacoesState extends State<Informacoes> {
     '👗 Montar looks',
     '♻️ Sustentabilidade',
     '✈️ Viagens',
-    '💼 Trabalho/Facul',
+    '💼 Trabalho/Faculdade',
   ];
 
   // Dados Etapa 2: Medidas e Tamanhos
